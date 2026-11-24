@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#174c43"><meta name="description" content="VIVA 12 — seu painel de equilíbrio e evolução pessoal.">
+  <link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png"><link rel="stylesheet" href="./styles.css">
+  <title>VIVA 12 | Minha evolução</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brandmark">V12</div><div><strong>VIVA 12</strong><small>Equilíbrio • Propósito • Evolução</small></div></div>
+  <div class="top-actions"><span id="today"></span><button class="iconbtn" id="installBtn" hidden>Instalar app</button></div>
+</header>
+<main>
+  <section class="welcome">
+    <div><p class="eyebrow">MEU PAINEL PESSOAL</p><h1>Uma vida com mais equilíbrio.</h1><p class="muted">Pequenos passos, todos os dias. Seu progresso não precisa ser perfeito para ser significativo.</p></div>
+    <div class="scorecard"><span>PONTOS DE HOJE</span><b id="todayPoints">0</b><small id="todayPercent">0% das ações concluídas</small></div>
+  </section>
+  <nav class="tabs" aria-label="Navegação">
+    <button class="tab active" data-tab="dia">Meu dia</button><button class="tab" data-tab="areas">12 áreas</button><button class="tab" data-tab="agenda">Agenda</button><button class="tab" data-tab="projetos">Projetos</button><button class="tab" data-tab="revisao">Revisões</button>
+  </nav>
+  <section class="panel active" id="panel-dia">
+    <div class="sectionhead"><div><p class="eyebrow">ACOMPANHAMENTO DIÁRIO</p><h2>Meu dia de evolução</h2></div><input type="date" id="dayDate"></div>
+    <div class="progress"><div id="progressBar"></div></div><p class="muted small" id="progressLabel">0 de 12 ações concluídas</p>
+    <div id="dailyTasks" class="taskgrid"></div>
+    <div class="reflection card"><h3>Como foi meu dia?</h3><label>Minha nota de satisfação <output id="ratingOut">5</output>/10<input id="rating" type="range" min="0" max="10" value="5"></label><label>Conquistas, dificuldades e prioridade de amanhã<textarea id="reflection" rows="3" placeholder="Registre sua reflexão..."></textarea></label><button class="primary" id="saveDay">Salvar avaliação do dia</button><span class="muted small" id="saveMsg" role="status"></span></div>
+  </section>
+  <section class="panel" id="panel-areas">
+    <div class="sectionhead"><div><p class="eyebrow">RODA DA VIDA</p><h2>Minhas 12 áreas</h2></div><span class="pill">Avaliação inicial: 5,0/10</span></div>
+    <p class="muted">Atualize suas notas mensalmente. Os valores iniciais foram transcritos da roda enviada.</p>
+    <div id="areasGrid" class="areasgrid"></div>
+  </section>
+  <section class="panel" id="panel-agenda">
+    <p class="eyebrow">ROTINA BASE</p><h2>Minha semana</h2><p class="muted">Agenda proposta com seus compromissos fixos. Ajuste os horários conforme deslocamentos e alterações reais.</p>
+    <div id="schedule" class="schedule"></div>
+    <div class="card"><h3>Lembretes e calendário</h3><p class="muted small">Ative notificações no navegador. Para levar os compromissos ao Google Agenda, baixe o arquivo .ics e importe-o no Google Calendar. A sincronização automática exige configuração adicional da API Google.</p><button class="primary" id="icsBtn">Baixar agenda VIVA 12 (.ics)</button><button class="secondary" id="notifyBtn">Ativar notificações neste dispositivo</button><span class="muted small" id="notifyStatus"></span></div>
+  </section>
+  <section class="panel" id="panel-projetos">
+    <p class="eyebrow">GESTÃO DA VIDA REAL</p><h2>Meus projetos</h2>
+    <div class="projectgrid">
+      <article class="card"><h3>Finanças pessoais</h3><p class="muted small">Organizar dívidas, juros, vencimentos e plano de quitação.</p><label>Total das dívidas (R$)<input id="debtTotal" type="number" min="0" step="0.01" placeholder="0,00"></label><label>Valor reservado para quitar (R$)<input id="debtReserve" type="number" min="0" step="0.01" placeholder="0,00"></label></article>
+      <article class="card"><h3>Dois apartamentos Airbnb</h3><ul><li>Mensagens e orientações padronizadas</li><li>Checklist de limpeza e manutenção</li><li>Ocupação, receita e despesas</li><li>Delegar operação quando possível</li></ul></article>
+      <article class="card"><h3>HIGIS</h3><ul><li>Reunião estratégica semanal</li><li>Acompanhar faturamento e lucro</li><li>Fidelização e contratos recorrentes</li><li>Desenvolver HIGIS CARE 365</li></ul></article>
+      <article class="card"><h3>Mestrado e artigos</h3><ul><li>Terça à noite: bloco acadêmico</li><li>Sábado pela manhã: escrita</li><li>Registrar ideias e referências</li><li>Trabalhar por entregas pequenas</li></ul></article>
+    </div>
+    <div class="card"><h3>Renda extra — limite de tempo</h3><p class="muted small">Priorizar melhorias nos negócios que já existem e produtos digitais autorais, sem criar uma atividade que exija atendimento constante.</p><label>Tempo máximo semanal (horas)<input id="extraHours" type="number" min="0" max="2" value="2"></label></div>
+  </section>
+  <section class="panel" id="panel-revisao">
+    <p class="eyebrow">EVOLUÇÃO CONTÍNUA</p><h2>Revisão semanal e mensal</h2>
+    <div class="card"><h3>Revisão semanal</h3><label>O que funcionou?<textarea id="weeklyGood" rows="2"></textarea></label><label>O que preciso ajustar ou delegar?<textarea id="weeklyAdjust" rows="2"></textarea></label><label>Minha prioridade da próxima semana<textarea id="weeklyPriority" rows="2"></textarea></label><button class="primary" id="saveWeekly">Salvar revisão semanal</button></div>
+    <div class="card"><h3>Fechamento mensal</h3><p class="muted small">Compare as notas das 12 áreas, reveja os hábitos e escolha até três prioridades para o mês seguinte.</p><button class="secondary" id="monthlyReport">Gerar relatório mensal (.txt)</button><button class="secondary" id="exportData">Exportar meus dados (.json)</button><label class="filelabel">Restaurar backup JSON<input type="file" id="importData" accept="application/json"></label></div>
+  </section>
+  <footer><span>VIVA 12 • Versão 1.0</span><span>Seja constante, não perfeita.</span></footer>
+</main>
+<script src="./app.js"></script>
+</body></html>
